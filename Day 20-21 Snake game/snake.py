@@ -1,8 +1,15 @@
 from turtle import Turtle
+MOVE_STEP = 20
+#Constant var in cap letters
+UP = 90
+DOWN = 270
+LEFT = 180
+RIGHT = 0
 class Snake:
     def __init__(self):
         self.segments = []
         self.create_snake()
+        self.head = self.segments[0]
 
     def create_snake(self):
         for _ in range(0, 3):
@@ -21,4 +28,17 @@ class Snake:
             new_x = self.segments[index - 1].xcor()
             new_y = self.segments[index - 1].ycor()
             self.segments[index].goto(new_x, new_y)
-        self.segments[0].fd(20)
+        self.head.fd(MOVE_STEP)
+
+    def up(self):
+        if self.head.heading() != DOWN:
+            self.head.setheading(UP)
+    def down(self):
+        if self.head.heading() != UP:
+            self.head.setheading(DOWN)
+    def left(self):
+        if self.head.heading() != RIGHT:
+            self.head.setheading(LEFT)
+    def right(self):
+        if self.head.heading() != LEFT:
+            self.head.setheading(RIGHT)
