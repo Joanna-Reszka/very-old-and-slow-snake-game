@@ -22,7 +22,15 @@ class Snake:
         for segment in self.segments:
             segment.goto(x, 0)
             x -= 20
+    def add_segment(self, position):
+        new_seg = Turtle("square")
+        new_seg.color('white')
+        new_seg.penup()
+        new_seg.goto(position)
+        self.segments.append(new_seg)
 
+    def extend(self):
+        self.add_segment(self.segments[-1].position()) #position (from turtle class) of last current segment
     def move(self):
         for index in range(len(self.segments) - 1, 0, -1):
             new_x = self.segments[index - 1].xcor()
