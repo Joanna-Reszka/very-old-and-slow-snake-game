@@ -23,4 +23,15 @@ while game_on:
     time.sleep(0.05)
     screen.update()
     ball.move()
+
+    # Detect collision with upper or lower wall
+    if ball.ycor() > 285 or ball.ycor() < -285:  # dist fro  wall less than 30 pixels
+        ball.bounce()
+
+    # Detect collision side walls
+    if ball.xcor() > 400 or ball.xcor() < -400:
+        game_on = False
+        #scoreboard.game_over()
+
+
 screen.exitonclick()
